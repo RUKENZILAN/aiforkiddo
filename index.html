@@ -8,15 +8,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#F3F1E8;
-    --board:#25422E;
-    --ink:#1E2A22;
-    --cork:#D9C9A3;
-    --coral:#E4572E;
-    --mustard:#E8AA3E;
-    --thread:#7A8B72;
+    --paper:#FFF6E9;
+    --board:#1F6F78;
+    --ink:#22343A;
+    --cork:#F2C879;
+    --coral:#FF6B4A;
+    --mustard:#FFC93C;
+    --thread:#4FB3A9;
     --card:#FFFDF7;
-    --line:#c9c0a4;
+    --line:#F0D9AE;
+    --violet:#8B5FBF;
+    --sky:#2FA8D6;
+    --pink:#FF6FA0;
+    --leaf:#4FAE5C;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -77,10 +81,13 @@
   /* ===== HEADER / PANO HERO ===== */
   header.board{
     background:
-      radial-gradient(circle at 18% 22%, rgba(255,255,255,0.05), transparent 45%),
+      radial-gradient(circle at 92% 12%, rgba(255,201,60,0.35), transparent 40%),
+      radial-gradient(circle at 80% 75%, rgba(255,111,74,0.30), transparent 38%),
+      radial-gradient(circle at 8% 78%, rgba(139,95,191,0.30), transparent 40%),
+      radial-gradient(circle at 18% 22%, rgba(255,255,255,0.08), transparent 45%),
       repeating-linear-gradient(135deg, rgba(0,0,0,0.05) 0 2px, transparent 2px 6px),
       var(--board);
-    color:#F3F1E8;
+    color:#FFF6E9;
     padding:64px 24px 80px;
     position:relative;
     border-bottom:10px solid var(--cork);
@@ -99,7 +106,7 @@
   header.board p.lede{
     max-width:56ch;
     font-size:1.08rem;
-    color:#DCE3D6;
+    color:#D8F0EC;
   }
   .pin-note{
     position:absolute;
@@ -139,8 +146,10 @@
     border:1px solid rgba(255,255,255,0.35);
     padding:7px 12px;
     border-radius:999px;
-    color:#F3F1E8;
+    color:#FFF6E9;
   }
+  .role-chip:nth-of-type(1){ background:rgba(255,111,74,0.18); }
+  .role-chip:nth-of-type(2){ background:rgba(47,168,214,0.18); }
 
   /* ===== SECTION SHELL ===== */
   section{
@@ -165,7 +174,7 @@
   }
   .section-head p{
     max-width:46ch;
-    color:#4b5445;
+    color:#3A5A5E;
     margin:8px 0 0;
   }
 
@@ -188,6 +197,9 @@
     transition:all .15s ease;
   }
   .filter-btn:hover{border-color:var(--coral);}
+  .filter-btn:nth-of-type(3):hover{border-color:var(--sky);}
+  .filter-btn:nth-of-type(4):hover{border-color:var(--violet);}
+  .filter-btn:nth-of-type(5):hover{border-color:var(--leaf);}
   .filter-btn.active{
     background:var(--board);
     color:var(--paper);
@@ -219,10 +231,13 @@
     position:absolute;
     top:-10px; left:22px;
     width:46px; height:16px;
-    background:rgba(232,170,62,0.75);
+    background:rgba(255,201,60,0.8);
     transform:rotate(-3deg);
     border-radius:1px;
   }
+  .card:nth-of-type(4n+2) .tape{ background:rgba(255,111,74,0.75); }
+  .card:nth-of-type(4n+3) .tape{ background:rgba(139,95,191,0.7); }
+  .card:nth-of-type(4n+4) .tape{ background:rgba(47,168,214,0.7); }
   .badge-row{
     display:flex;
     gap:6px;
@@ -236,15 +251,15 @@
     border-radius:4px;
     text-transform:uppercase;
   }
-  .badge.age{ background:#E9F1E4; color:#2f4a2a; }
-  .badge.type{ background:#FCE9DF; color:#7a2f10; }
-  .badge.free{ background:#EAF0FA; color:#1d3a63; }
+  .badge.age{ background:#DCF3EF; color:#116358; }
+  .badge.type{ background:#FFE3D6; color:#C4400F; }
+  .badge.free{ background:#FFF1C2; color:#8A6300; }
   .card h3{
     font-size:1.15rem;
     margin-top:2px;
   }
   .card p{
-    color:#4b5445;
+    color:#3A5A5E;
     font-size:0.92rem;
     margin:0;
     flex-grow:1;
@@ -252,7 +267,7 @@
   .card .source{
     font-family:'IBM Plex Mono', monospace;
     font-size:0.7rem;
-    color:#8a7d55;
+    color:#C97A2B;
   }
   .card .go{
     margin-top:6px;
@@ -264,6 +279,9 @@
     color:var(--coral);
     text-decoration:none;
   }
+  .card:nth-of-type(4n+2) .go{ color:var(--sky); }
+  .card:nth-of-type(4n+3) .go{ color:var(--violet); }
+  .card:nth-of-type(4n+4) .go{ color:var(--leaf); }
   .card .go:hover{ text-decoration:underline; }
 
   /* ===== VIDEO CHANNEL LIST ===== */
@@ -279,6 +297,9 @@
     padding:16px 18px;
     border-radius:4px;
   }
+  .channel:nth-of-type(4n+2){ border-left-color:var(--sky); }
+  .channel:nth-of-type(4n+3){ border-left-color:var(--violet); }
+  .channel:nth-of-type(4n+4){ border-left-color:var(--leaf); }
   .channel h4{
     font-family:'Fraunces', serif;
     font-size:1.02rem;
@@ -288,7 +309,7 @@
   .channel p{
     margin:0 0 10px;
     font-size:0.86rem;
-    color:#4b5445;
+    color:#3A5A5E;
   }
   .channel a{
     font-family:'IBM Plex Mono', monospace;
@@ -319,7 +340,7 @@
     padding-left:18px;
     margin:0;
     font-size:0.9rem;
-    color:#D8DECB;
+    color:#CDEAE6;
   }
   .license-panel li{ margin-bottom:8px; }
 
@@ -340,6 +361,9 @@
     color:var(--coral);
     font-size:0.78rem;
   }
+  .tip:nth-of-type(4n+2) .num{ color:var(--sky); }
+  .tip:nth-of-type(4n+3) .num{ color:var(--violet); }
+  .tip:nth-of-type(4n+4) .num{ color:var(--leaf); }
   .tip h4{
     font-family:'Fraunces', serif;
     font-weight:600;
@@ -348,7 +372,7 @@
   }
   .tip p{
     font-size:0.88rem;
-    color:#4b5445;
+    color:#3A5A5E;
     margin:0;
   }
 
@@ -357,7 +381,7 @@
     padding:40px 24px 60px;
     font-family:'IBM Plex Mono', monospace;
     font-size:0.75rem;
-    color:#7a8368;
+    color:#5A9B94;
   }
 
   .sr-only{ position:absolute; width:1px;height:1px; overflow:hidden; clip:rect(0,0,0,0);}
@@ -379,7 +403,7 @@
   <div class="board-inner">
     <div class="eyebrow" data-i18n-tr="Sınıf Panosu · Küratörlü Kaynak Rehberi" data-i18n-en="Class Board · Curated Resource Guide">Sınıf Panosu · Küratörlü Kaynak Rehberi</div>
     <h1 data-i18n-tr="Çocuklar İçin Yapay Zekâ Öğrenme Panosu" data-i18n-en="AI Learning Board for Kids">Çocuklar İçin Yapay Zekâ Öğrenme Panosu</h1>
-    <p class="lede" data-i18n-tr="Bir eğitmen ve bir bilişim teknolojileri uzmanı gözüyle seçildi: video kanalları, interaktif platformlar ve müfredatlar tek panoda — hiçbiri kopyalanmadan, hepsi kendi resmi adresine yönlendirilerek." data-i18n-en="Selected through the eyes of an educator and an IT specialist: video channels, interactive platforms and curricula on a single board — none copied, all linked to their own official addresses.">Bir eğitmen ve bir bilişim teknolojileri uzmanı gözüyle seçildi: video kanalları, interaktif platformlar ve müfredatlar tek panoda — hiçbiri kopyalanmadan, hepsi kendi resmi adresine yönlendirilerek.</p>
+    <p class="lede" data-i18n-tr="Bir eğitmenin ve bir bilişim teknolojileri uzmanının değerlendirmesinden geçti: video kanalları, interaktif platformlar ve müfredatlar tek bir panoda bir araya getirildi — hiçbiri kopyalanmadan, her biri kendi resmi adresine yönlendirilerek." data-i18n-en="Selected through the eyes of an educator and an IT specialist: video channels, interactive platforms and curricula on a single board — none copied, all linked to their own official addresses.">Bir eğitmenin ve bir bilişim teknolojileri uzmanının değerlendirmesinden geçti: video kanalları, interaktif platformlar ve müfredatlar tek bir panoda bir araya getirildi — hiçbiri kopyalanmadan, her biri kendi resmi adresine yönlendirilerek.</p>
     <div class="roles">
       <span class="role-chip" data-i18n-tr="👩‍🏫 Eğitmen onayı: yaşa uygun kazanım" data-i18n-en="👩‍🏫 Educator approved: age-appropriate outcomes">👩‍🏫 Eğitmen onayı: yaşa uygun kazanım</span>
       <span class="role-chip" data-i18n-tr="🛡️ BT uzmanı onayı: lisans ve gizlilik uyumu" data-i18n-en="🛡️ IT specialist approved: license &amp; privacy compliance">🛡️ BT uzmanı onayı: lisans ve gizlilik uyumu</span>
@@ -390,7 +414,7 @@
 <section id="platformlar">
   <div class="section-head">
     <div>
-      <div class="eyebrow" data-i18n-tr="01 · İnteraktif Öğrenme" data-i18n-en="01 · Interactive Learning">01 · İnteraktif Öğrenme</div>
+      <div class="eyebrow" style="color:var(--sky)" data-i18n-tr="01 · İnteraktif Öğrenme" data-i18n-en="01 · Interactive Learning">01 · İnteraktif Öğrenme</div>
       <h2 data-i18n-tr="Platformlar &amp; Müfredatlar" data-i18n-en="Platforms &amp; Curricula">Platformlar &amp; Müfredatlar</h2>
       <p data-i18n-tr="Hepsi resmi, çoğunlukla ücretsiz kaynaklar. Kartlara tıklamak sizi doğrudan sağlayıcının kendi sitesine götürür; içerik burada barındırılmaz." data-i18n-en="All official, mostly free resources. Clicking a card takes you straight to the provider's own site; nothing is hosted here.">Hepsi resmi, çoğunlukla ücretsiz kaynaklar. Kartlara tıklamak sizi doğrudan sağlayıcının kendi sitesine götürür; içerik burada barındırılmaz.</p>
     </div>
@@ -529,7 +553,7 @@
 <section id="videolar">
   <div class="section-head">
     <div>
-      <div class="eyebrow" data-i18n-tr="02 · Video ile Öğrenme" data-i18n-en="02 · Learning with Video">02 · Video ile Öğrenme</div>
+      <div class="eyebrow" style="color:var(--pink)" data-i18n-tr="02 · Video ile Öğrenme" data-i18n-en="02 · Learning with Video">02 · Video ile Öğrenme</div>
       <h2 data-i18n-tr="Eğitici Video Kanalları" data-i18n-en="Educational Video Channels">Eğitici Video Kanalları</h2>
       <p data-i18n-tr="Videolar bu sitede yeniden yayınlanmaz. Her kart, kanalın kendi YouTube sayfasına ya da güncel bir arama sonucuna yönlendirir; böylece içerik her zaman kanalın orijinal telifiyle, en güncel haliyle izlenir." data-i18n-en="Videos are not re-published on this site. Each card links to the channel's own YouTube page or a current search result, so content is always viewed under the channel's original copyright, in its most up-to-date form.">Videolar bu sitede yeniden yayınlanmaz. Her kart, kanalın kendi YouTube sayfasına ya da güncel bir arama sonucuna yönlendirir; böylece içerik her zaman kanalın orijinal telifiyle, en güncel haliyle izlenir.</p>
     </div>
@@ -575,10 +599,10 @@
       <div class="eyebrow" data-i18n-tr="BT Uzmanı Notu" data-i18n-en="IT Specialist Note">BT Uzmanı Notu</div>
       <h3 data-i18n-tr="Bu site içerikleri neden barındırmıyor?" data-i18n-en="Why doesn't this site host any content?">Bu site içerikleri neden barındırmıyor?</h3>
       <ul>
-        <li data-i18n-tr="Hiçbir video indirilmez, yeniden kodlanmaz veya bu sitede yeniden yayınlanmaz — tüm bağlantılar kaynağın kendi resmi adresine gider." data-i18n-en="No video is downloaded, re-encoded or re-published on this site — all links go to the source's own official address.">Hiçbir video indirilmez, yeniden kodlanmaz veya bu sitede yeniden yayınlanmaz — tüm bağlantılar kaynağın kendi resmi adresine gider.</li>
-        <li data-i18n-tr="Platform açıklamaları özgün metinlerle yazılmıştır; sağlayıcının kendi metni birebir kopyalanmamıştır." data-i18n-en="Platform descriptions are written in original wording; the provider's own text is not copied verbatim.">Platform açıklamaları özgün metinlerle yazılmıştır; sağlayıcının kendi metni birebir kopyalanmamıştır.</li>
-        <li data-i18n-tr="Bağlantılar &lt;code&gt;target=&quot;_blank&quot; rel=&quot;noopener&quot;&lt;/code&gt; ile açılır; bu hem güvenlik hem de kaynağın trafiğini/telif hakkını koruma açısından doğru pratiktir." data-i18n-en="Links open with &lt;code&gt;target=&quot;_blank&quot; rel=&quot;noopener&quot;&lt;/code&gt;; this is good practice for both security and protecting the source's traffic/copyright."><code>target="_blank" rel="noopener"</code> ile açılır; bu hem güvenlik hem de kaynağın trafiğini/telif hakkını koruma açısından doğru pratiktir.</li>
-        <li data-i18n-tr="Bir kaynağın ücretsiz olması, telifsiz olduğu anlamına gelmez — &quot;Ücretsiz&quot; rozeti yalnızca erişim maliyetini belirtir." data-i18n-en="A resource being free does not mean it is copyright-free — the &quot;Free&quot; badge only indicates access cost.">Bir kaynağın ücretsiz olması, telifsiz olduğu anlamına gelmez — "Ücretsiz" rozeti yalnızca erişim maliyetini belirtir.</li>
+        <li data-i18n-tr="Hiçbir video bu siteye indirilmez veya kopyalanmaz — tüm bağlantılar sizi doğrudan kaynağın kendi resmi sitesine götürür." data-i18n-en="No video is downloaded, re-encoded or re-published on this site — all links go to the source's own official address.">Hiçbir video bu siteye indirilmez veya kopyalanmaz — tüm bağlantılar sizi doğrudan kaynağın kendi resmi sitesine götürür.</li>
+        <li data-i18n-tr="Platform açıklamaları kendi cümlelerimizle yazılmıştır; sağlayıcının metni birebir kopyalanmamıştır." data-i18n-en="Platform descriptions are written in original wording; the provider's own text is not copied verbatim.">Platform açıklamaları kendi cümlelerimizle yazılmıştır; sağlayıcının metni birebir kopyalanmamıştır.</li>
+        <li data-i18n-tr="Bağlantılar yeni bir sekmede, kaynağa saygılı ve güvenli bir şekilde açılır." data-i18n-en="Links open with &lt;code&gt;target=&quot;_blank&quot; rel=&quot;noopener&quot;&lt;/code&gt;; this is good practice for both security and protecting the source's traffic/copyright.">Bağlantılar yeni bir sekmede, kaynağa saygılı ve güvenli bir şekilde açılır.</li>
+        <li data-i18n-tr="Bir kaynağın ücretsiz olması telifsiz olduğu anlamına gelmez — &quot;Ücretsiz&quot; rozeti yalnızca kullanımın herhangi bir ücret gerektirmediğini gösterir." data-i18n-en="A resource being free does not mean it is copyright-free — the &quot;Free&quot; badge only indicates access cost.">Bir kaynağın ücretsiz olması telifsiz olduğu anlamına gelmez — "Ücretsiz" rozeti yalnızca kullanımın herhangi bir ücret gerektirmediğini gösterir.</li>
       </ul>
     </div>
     <div>
@@ -596,7 +620,7 @@
 <section id="ipuclari">
   <div class="section-head">
     <div>
-      <div class="eyebrow" data-i18n-tr="03 · Sınıfta veya Evde" data-i18n-en="03 · In Class or at Home">03 · Sınıfta veya Evde</div>
+      <div class="eyebrow" style="color:var(--violet)" data-i18n-tr="03 · Sınıfta veya Evde" data-i18n-en="03 · In Class or at Home">03 · Sınıfta veya Evde</div>
       <h2 data-i18n-tr="Kullanım İpuçları" data-i18n-en="Usage Tips">Kullanım İpuçları</h2>
     </div>
   </div>
